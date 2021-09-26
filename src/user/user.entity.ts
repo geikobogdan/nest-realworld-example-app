@@ -1,3 +1,4 @@
+import { CommentEntity } from './../comment/comment.entity';
 import { ArticleEntity } from './../article/article.entity';
 import {
   BeforeInsert,
@@ -41,4 +42,7 @@ export class UserEntity {
   @ManyToMany(() => ArticleEntity)
   @JoinTable()
   favorites: ArticleEntity[];
+
+  @OneToMany(() => CommentEntity, (comment) => comment.author)
+  comments: CommentEntity[];
 }
